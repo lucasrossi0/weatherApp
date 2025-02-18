@@ -9,6 +9,7 @@ const containerStyle = {
   borderRadius: "8px",
   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
   backgroundColor: "#f9f9f9",
+  color: "black",
 };
 
 export default function Weather() {
@@ -23,8 +24,7 @@ export default function Weather() {
     setLoading(true);
     setError("");
     try {
-
-     const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
+      const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
 
       const currentWeatherResponse = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
@@ -38,7 +38,7 @@ export default function Weather() {
       setForecast(
         forecastResponse.data.list.filter((_, index) => index % 8 === 0)
       );
-        console.log(forecastResponse);
+      console.log(forecastResponse);
     } catch (err) {
       setError("Failed to fetch weather data. Please try again.");
     } finally {
@@ -96,5 +96,3 @@ export default function Weather() {
     </div>
   );
 }
-
-
